@@ -3,46 +3,84 @@ var DinnerModel = function() {
  
 	//TODO Lab 1 implement the data structure that will hold number of guest
 	// and selected dishes for the dinner menu
+	
+	//Datastructure
+	this.numOfGuests = 0;
+	this.dinnerList = [];
 
 
 	this.setNumberOfGuests = function(num) {
 		//TODO Lab 1
+		this.numOfGuests = num;
 	}
 	
 	this.getNumberOfGuests = function() {
 		//TODO Lab 1
+		return this.numOfGuests;
 	}
 
 	//Returns the dish that is on the menu for selected type 
 	this.getSelectedDish = function(type) {
 		//TODO Lab 1
+		for (i = 0; i < dinnerList.length; i++) {
+			if(dinnerList[i].type == type)
+				return dinnerList[i];
+		}
 	}
 
 	//Returns all the dishes on the menu.
 	this.getFullMenu = function() {
 		//TODO Lab 1
+		return this.dinnerList;
 	}
 
 	//Returns all ingredients for all the dishes on the menu.
 	this.getAllIngredients = function() {
 		//TODO Lab 1
+		var allIngredients= [];
+		for(i = 0; i < this.dinnerList.length; i++) {
+			for(j = 0; j < this.dinnerList[i].ingredients.length; j++) {
+				allIngredients.push(this.dinnerList[i].ingredients[j]);
+			}
+		}
+		return allIngredients;
 	}
 
 	//Returns the total price of the menu (all the ingredients multiplied by number of guests).
 	this.getTotalMenuPrice = function() {
 		//TODO Lab 1
+		var totalPrice = 0;
+		var allIngredients = this.getAllIngredients();
+		for(i = 0; i < allIngredients.length; i++){
+			totalPrice += allIngredients[i].price;
+		}
+		return totalPrice * this.numOfGuests;
 	}
 
 	//Adds the passed dish to the menu. If the dish of that type already exists on the menu
 	//it is removed from the menu and the new one added.
 	this.addDishToMenu = function(id) {
 		//TODO Lab 1 
-	}
+		var myDish = this.getDish(id);
+		for(i = 0; i < this.dinnerList.length; i++) {
+			if(myDish.type == i.type) {
+				this.removeDishFromMenu(i.id);
+			}
+		}
+		this.dinnerList.push(myDish);
+	}	
+
 
 	//Removes dish from menu
 	this.removeDishFromMenu = function(id) {
 		//TODO Lab 1
+		for(var i = 0; i < dinnerList.length; i++) {
+			if(dinnerList[i].id === id) {
+				dinnerList.splice(i, 1);
+			}
+		}
 	}
+
 
 	//function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")
 	//you can use the filter argument to filter out the dish by name or ingredient (use for search)
