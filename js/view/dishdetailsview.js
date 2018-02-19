@@ -26,28 +26,26 @@ var DishDetailsView = function (container,model) {
 			this.ingredients.html("");
 
 			for (i in ingredient) {
-				this.ingredients.append("<tr><td>" + Math.round(ingredient[i]['quantity']*model.getNumberOfGuests()) + " " + ingredient[i]['unit'] + "</td><td>" + ingredient[i]['name'] + "</td><td>SEK</td><td>" + ingredient[i]['price']*model.getNumberOfGuests() + "</td></tr>");
+				this.ingredients.append("<tr><td>" + ingredient[i]['quantity']*model.getNumberOfGuests() + " " + ingredient[i]['unit'] + "</td><td>" + ingredient[i]['name'] + "</td><td>SEK</td><td>" + ingredient[i]['price']*model.getNumberOfGuests() + "</td></tr>");
 			};
 
 		} 
 
 	// Ger oss vyn vid tidigare tillstånd från föregående sida
 		else if(args == "selectedDishId") {
-				this.dish = model.getDish(model.getSelectedDishId());
-				this.ingredientsListtitle.html("Ingredients for "+ model.getNumberOfGuests() + " people.");
-				this.priceSum.html(model.getDishPrice(this.dish["id"]));
-				this.title.html(this.dish['name']);
-				this.image.html("<img class='dish' src=images/" + this.dish['image'] + ">");
-				this.description.html(this.dish['description']);
+			this.dish = model.getDish(model.getSelectedDishId());
+			this.ingredientsListtitle.html("Ingredients for "+ model.getNumberOfGuests() + " people.");
+			this.priceSum.html(model.getDishPrice(this.dish["id"]));
+			this.title.html(this.dish['name']);
+			this.image.html("<img class='dish' src=images/" + this.dish['image'] + ">");
+			this.description.html(this.dish['description']);
 
+			var ingredient = this.dish['ingredients'];
+			this.ingredients.html("");
 
-				var ingredient = this.dish['ingredients'];
-				this.ingredients.html("");
-
-
-				for (i in ingredient) {
-				this.ingredients.append("<tr><td>" + Math.round(ingredient[i]['quantity']*model.getNumberOfGuests()) + " " + ingredient[i]['unit'] + "</td><td>" + ingredient[i]['name'] + "</td><td>SEK</td><td>" + ingredient[i]['price']*model.getNumberOfGuests() + "</td></tr>");
-				};
+			for (i in ingredient) {
+				this.ingredients.append("<tr><td>" + ingredient[i]['quantity']*model.getNumberOfGuests() + " " + ingredient[i]['unit'] + "</td><td>" + ingredient[i]['name'] + "</td><td>SEK</td><td>" + ingredient[i]['price']*model.getNumberOfGuests() + "</td></tr>");
+			};
 		}
 	}
 
