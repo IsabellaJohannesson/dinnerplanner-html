@@ -1,6 +1,7 @@
 //ExampleView Object constructor
 var DishSearchController = function (view,model) {
-		
+	
+	// Vid klick av typ av rätt	
 	$("#select-type").change(function(){
 	var type = $(this).val();
 	console.log("typeselector" + type);
@@ -8,7 +9,7 @@ var DishSearchController = function (view,model) {
 	view.selectedDishType(type);
 	});
 
-	//click event for the search button
+	// Vid klick av sökknappen
 	$("#dish-search-search-btn").click(function(){
 		var type = $("#select-type").val();
 		var filter = $("#search-field").val();
@@ -18,7 +19,8 @@ var DishSearchController = function (view,model) {
 	});
 
 
-		$(".dish-search-image").click(function() {
+	// Vid klick av bild för att komma till dishdetailsView.js
+	$(".dish-search-image").click(function() {
 		var id = $(this).find(".dish-id").text();
 		model.setSelectedDishId(id);
 		console.log("dish-search-image " + id);
@@ -31,4 +33,3 @@ var DishSearchController = function (view,model) {
 
 }
  
-
