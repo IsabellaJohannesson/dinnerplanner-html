@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dinner planner</title>
+    <!-- test test test-->
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+
+
+  </head>
+  <body>
+	
+  <div class="container">
+
+	<!-- VIEW 1 - HOME SCREEN -->
+	<!-- ############################################ -->
+		<div class="col-md-12" id="home-view">
+		
+		<div class="row" id="header-view">
+			<div class="col-md-12">
+				<span class="dinnerplanner">Dinner planner</span>
+			</div>
+		</div>
+
+			<div class="col-md-12" id="home-content">
+				<div class="row">
+				
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat.
+				
+				<br>
+				<br>
+
+				<center><button class="btn" id="home-confirm-btn" onclick="gotoDishSearchView()">Create new dinner</button></center>
+
+
+				</div>
+			</div>		      
+		</div>
+
+		<div class="col-md-12" id="header-view">
+			<div class="row">
+				<span class="dinnerplanner">Dinner planner</span>
+			</div>
+		</div>
+
+
+
+<div class="row" id="view-container">
+			
+	<!-- VIEW 2 - SIDEBAR VIEW -->
+	<!-- ############################################ -->
+
+			
+			<div class="col-md-3" id="sidebar-view">
+				<h3>My Dinner</h3>
+				<br>
+				<p>Number of guests:</p>
+				<div id="numOfGuests"></div>
+
+				<button id="minusGuest" class="btn"><span class="glyphicon glyphicon-minus"></span></button>
+				<button id="plusGuest" class="btn"><span class="glyphicon glyphicon-plus"></span></button>
+
+				<br>
+				<br>
+					<div class="seperator">
+						<p class="alignleft">Dish name</p>
+						<p class="alignright">Cost</p>
+					</div>
+				
+				<table class="table" id="myOrder">
+					<tbody id="orderList">
+						
+					</tbody>
+
+					<!-- #myOrder content here -->
+					<tfoot>
+						<tr>
+							<td>Total</td>
+							<td id="totalCost"></td>
+						</tr>
+					</tfoot>
+				</table>
+				
+				<button class="btn" id="sidebar-confirm-btn">Confirm Dinner</button>
+
+			</div>
+		 <!--end of sidebar view -->
+	
+
+	<!-- VIEW 3 - SELECT DINNER VIEW -->
+	<!-- ############################################ -->
+
+			<div class="col-md-9" id="dish-search-view">
+				
+				<div class="row" id="dish-search-top">
+					<span class="selectDish">Select dish</span>
+					<div class="col-md-6">
+						<span id="search">
+  							<form>
+  								<div class="form-group">
+    							<h6>Search:</h6>
+
+    							<input type="text" class="form-control" id="search-field" placeholder="Enter key words">
+  								<button class="btn" type="button" id="dish-search-search-btn">Search</button>
+  								<select class="form-control" id="select-type">
+    								<option value="starter">Starter</option>
+   									<option value="main dish">Main Dish</option>
+    								<option value="dessert">Dessert</option>
+  								</select>
+  								</div>
+  							</form>
+  						</span>
+  					</div>	
+				</div>
+
+				<div class="row" id="dish-search-bottom">
+					<div class="col-md-12">
+							<!-- Pictures goes here -->
+					</div>
+				</div>
+
+
+			</div>
+
+			
+ <!-- END OF VIEW 2 AND 3 -->
+
+
+	<!-- VIEW 4 - SINGLE DISH VIEW -->
+	<!-- ############################################ -->
+
+			<div class="col-md-9" id="dish-details-view">
+
+				<div class="col-md-5" id="dish-details-left">
+					<h2 class="dish-details-title"></h2>
+					<div class="dish-details-image"></div>
+					<span class="dish-details-summary">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat.</span>
+
+					<button class="btn" id="dish-details-back-btn">Back to start</button>
+
+				</div>
+
+				<div class="col-md-5" id="dish-details-right">
+					<table class="table" id="ingredientsList">
+						<thead>	
+							<h4 id="ingredientsList-title"></h4>
+						</thead>
+						<tbody id="ingredientsList-ingredients">
+						</tbody>
+						<tfoot>
+							<tr>
+								<td colspan="2"><button class="btn" id="dish-details-confirm-btn">Confirm Dish</button></td>
+								<td>SEK</td>
+								<td id="priceSum"></td>
+							</tr>
+						</tfoot>
+					</table>
+				</div>
+
+				<div class="col-md-12" id="single-dish-instr">
+					<h3>Preparation</h3>
+					<span class="dish-details-description"></span>
+				</div>
+			</div>
+
+	<!-- VIEW 5 - DINNER OVERVIEW VIEW -->
+	<!-- ############################################ -->	
+		<div class="row" id="dinner-overview-view">
+
+			<div class="col-md-12" id="dinner-overview-top">
+				<span id="dinner-overview-mydinner"></span>
+				<button class="btn" id="dinner-overview-back-btn">Go back and edit dinner</button>
+			</div>
+
+			<div class="col-md-12" id="dinner-overview-bottom">
+			</div>
+
+			<div class="col-md-12 do-button">
+				<span id="dinner-overview-totalprice"></span>
+
+				<button class="btn" id="dinner-overview-confirm-btn">Print full recipe</button>
+			</div>
+
+		</div>
+
+	<!-- VIEW 6 - DINNER PREPARATION VIEW -->
+	<!-- ############################################ -->
+
+	<div class="row" id="dinner-printout-view">
+
+		<div class="col-md-12" id="dinner-printout-top">
+			<span id="dinner-printout-mydinner"></span>
+			<button class="btn" id="dinner-printout-back-btn">Go back and edit dinner</button>
+		</div>
+	
+		<div id="dinner-printout-bottom">
+				<h2 class="dish-title"></h2>
+			<!-- GENEREATED CONTENT HERE -->	
+		</div>
+	</div>
+
+
+
+
+</div> <!-- end of view-container -->
+</div> <!-- END OF CONTAINER -->
+
+
+
+
+
+
+
+
+	<script>
+	function gotoDishSearchView()
+		{
+			$('#home-view').hide();
+			$('#top').show();
+			$('#sidebar-view').show();
+			$('#dish-search-view').show();
+			$('#dish-details-view').hide();
+		}
+	</script>
+
+
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- Bootstrap JavaScript, needed if you want for instance tabs, models, popovers etc. -->
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+	<!-- The application JavaScript code -->
+	<script src="js/app.js"></script>
+	<script src="js/model/dinnerModel.js"></script>
+
+	<script src="js/view/sidebarView.js"></script>
+	<script src="js/controller/sidebarController.js"></script>
+
+	<script src="js/view/dishSearchView.js"></script>
+	<script src="js/controller/dishSearchController.js"></script>
+
+	<script src="js/view/dishDetailsView.js"></script>
+	<script src="js/controller/dishDetailsController.js"></script>
+
+	<script src="js/view/dinnerOverView.js"></script>
+	<script src="js/controller/dinnerOverViewController.js"></script>
+
+	<script src="js/view/dinnerPrintOutView.js"></script>
+	<script src="js/controller/dinnerPrintOutController.js"></script>
+
+
+  </body>
+</html>
