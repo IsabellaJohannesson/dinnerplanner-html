@@ -18,5 +18,17 @@ var DishSearchController = function (view,model) {
 	});
 
 
+		$(".dish-search-image").click(function() {
+		var id = $(this).find(".dish-id").text();
+		model.setSelectedDishId(id);
+		console.log("dish-search-image " + id);
+		$('#dish-search-view').hide();
+		$('#dish-details-view').show();
+		$('#pendingprice').html(model.getDishPrice(id));
+		$('#pendingrow').show();
+		});
+
+
 }
  
+
