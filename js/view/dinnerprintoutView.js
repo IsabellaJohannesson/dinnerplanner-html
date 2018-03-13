@@ -4,6 +4,9 @@ var DinnerPrintOutView = function (container, model) {
 		this.title = container.find("#dinner-printout-mydinner");
 		this.container = container.find("#dinner-printout-bottom");
 
+
+		this.goBack = container.find("#dinner-printout-back-btn");
+
 	// Addering av element i HTML
 		var numOfGuests = model.getNumberOfGuests();
 
@@ -56,3 +59,4 @@ var DinnerPrintOutView = function (container, model) {
 
 
 };
+
