@@ -1,0 +1,330 @@
+html, body { 
+	height:100%; 
+	font-family: "Comic Sans MS", "Comic Sans", cursive;
+}
+
+
+h1, h2, h3, h4, h5, h6, p {
+	font-weight: bold;
+}
+
+#header-view {
+	background-color: #e5e5e5;
+	border-bottom: 4px solid #d3d3d3;
+}
+
+.dinnerplanner {
+	text-align: center;
+	font-weight: bold;
+	font-size: 64px;
+	float: center;
+}
+
+
+/* HOME-VIEW */
+
+
+
+#home-confirm-btn {
+	font-size: 12px;
+	font-weight: bold;
+	background: #ffcf75;
+	border: 2px solid black;
+}
+
+
+#home-content {
+	margin-top: 100px;
+	padding-left: 300px;
+	padding-right: 300px;
+	height:700px;
+}
+
+
+/* SIDEBAR-VIEW */
+
+#sidebar-view {
+	height:auto;
+	padding:10px;
+	border-right: 2px dotted grey;
+}
+
+
+.seperator {
+    background-color: #e5e5e5;
+    border: 2px solid black;
+    height: 30px;
+}
+
+
+p.alignleft {
+	float: left;
+}
+
+
+p.alignright {
+	float: right;
+}
+
+
+.table {
+	margin-top: 10px;
+}
+
+
+#sidebar-confirm-btn {
+	font-size: 12px;
+	font-weight: bold;
+	background: #e5e5e5;
+	border: 2px solid black;
+	width: 80%;
+	text-align: center;
+}
+
+
+/* DISH-SEARCH-VIEW */
+
+#dish-search-top {
+	padding-bottom: 15px;
+	border-bottom: 2px dotted grey;
+}
+
+
+.selectDish {
+	display:block;
+	margin: 10px;
+	font-weight: bold;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+}
+
+
+#dish-search-search-btn {
+	font-size: 12px;
+	background: #ffcf75;
+	border: 2px solid black;
+
+}
+
+
+#dish-search-bottom {
+	height:auto;
+	text-align:center;
+	padding-top: 20px;
+}
+
+
+.dishlistbox {
+	display:inline-block;
+	width:140px;
+	height: 200px;
+	overflow: hidden;
+	margin-right: 10px;
+}
+
+
+.dish-search-image {
+	margin-top:10px;
+	width:140px;
+	height:200px;
+	position:relative;
+	background-size:cover;
+	background-repeat: no-repeat;
+	overflow:hidden;
+}
+
+
+span.dish-search-title {
+	text-align: center;
+	width:140px;
+	margin-top: 20px;
+	line-height: 20px;
+	background-color: #fff;
+	font-size: 12px;
+	display: block;
+	color: #000;
+}
+
+
+/* DISH-DETAILS-VIEW */
+
+.dish-details-image {
+	height:200px;
+	margin-bottom: 10px;
+	overflow: hidden;
+}
+
+
+img.dish {
+	width:100%;
+}
+
+
+#dish-details-back-btn {
+	font-size: 12px;
+	background: #ffcf75;
+	border: 2px solid black;
+}
+
+
+#ingredientsList {
+	border: 3px solid #d3d3d3;
+	background-color: #FFE599;
+}
+
+
+#dish-details-confirm-btn {
+	font-size: 12px;
+	background: #ffcf75;
+	border: 2px solid black;
+}
+
+
+#priceSum {
+	font-weight: bold;
+}
+
+
+.dish-details-description {
+	font-size: 11px;
+}
+
+
+/* DINNER-OVERVIEW-VIEW */
+
+#dinner-overview-top {
+	height:60px;
+	padding-top: 10px;
+	border-bottom: 2px dotted grey;
+	margin-bottom: 20px;
+}
+
+#dinner-overview-mydinner {
+	font-size: 24px;
+	font-weight: bold;
+}
+
+#dinner-overview-back-btn {
+	float:right;
+	font-size: 12px;
+	font-weight: bold;
+	background: #ffcf75;
+	border: 2px solid black;
+	width: 200px;
+}
+
+#dinner-overview-confirm-btn {
+	font-size: 12px;
+	font-weight: bold;
+	background: #ffcf75;
+	border: 2px solid black;
+	width: 250px;
+	float: center;
+}
+
+
+#dinner-overview-bottom {
+	padding-top:20px;
+	margin:auto;
+	text-align: center;
+}
+
+.dinner-overview-image {
+	width:140px;
+	height:140px;
+	position:relative;
+	background-size:cover;
+	background-repeat: no-repeat;
+	overflow:hidden;
+}
+
+.dinner-overview-title {
+	text-align:center;
+	width:140px;
+	margin-top: 120px;
+	line-height: 20px;
+	background-color: rgba(0,0,0,0.5);
+	font-size: 14px;
+	display: block;
+	color: #fff;
+}
+
+
+.dinner-overview-price {
+	float:right;
+	text-align: right;
+	font-weight: bold;
+}
+
+#dinner-overview-totalprice {
+	text-align: center;
+	margin-left:auto;
+	display: block;
+	font-size: 22px;
+	margin-bottom: 20px;
+
+}
+
+/* DINNER-PRINTOUT-VIEW */
+
+#dinner-printout-top {
+	height:60px;
+	padding-top: 10px;
+	border-bottom: 2px dotted grey;
+	margin-bottom: 20px;
+}
+
+
+#dinner-printout-mydinner {
+	font-size: 24px;
+	font-weight: bold;
+}
+
+
+#dinner-printout-back-btn {
+	float:right;
+	font-size: 12px;
+	font-weight: bold;
+	background: #ffcf75;
+	border: 2px solid black;
+	width: 200px;
+}
+
+
+.dinner-printout-row {
+	margin-bottom:30px;
+}
+
+
+.dinner-printout-image {
+	width:160px;
+	height:160px;
+	position:relative;
+	background-size:cover;
+	background-repeat: no-repeat;
+	display: block;
+	overflow:hidden;
+
+}
+
+
+.dinner-printout-title {
+	font-size: 20px;
+	font-weight:bold;
+	display: block;
+	margin-bottom:15px;
+}
+
+
+.preparation {
+	font-size: 16px;
+	font-weight: bold;
+	margin-bottom:10px;
+	display: block;
+}
+
+
+#image-container {
+	height:150px;
+
+}
