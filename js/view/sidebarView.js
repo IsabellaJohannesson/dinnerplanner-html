@@ -1,42 +1,56 @@
-//ExampleView Object constructor
-var SidebarView = function (container,model) {
+var SidebarView = function(container, model) {
 
-	this.fullMenu = model.getFullMenu();
+	var numOfGuests = container.find("#numOfGuests");
 
-	this.numOfGuests = container.find("#numOfGuests");
-	this.orderList = container.find("#orderList");
-	this.totalCost = container.find("#totalCost");
+	this.plusButton = container.find("#plusGuest");
+	this.minusButton = container.find("#minusGuest");
+	this.confirmButton = container.find("#sidebar-confirm-btn");
 	
-	this.confirmbutton = container.find("#sidebar-confirm-btn");
+	var orderList = container.find("#orderList");
+	var totalPrice = container.find("#totalPrice")
 
 
-	this.update = function(args) {
+	var div = document.createElement('DIV');
+	div.className = "orderList";
+	orderList.prepend(div);
 
-		// Uppdaterar pris om vi ändrar this.notifyObserver("numOfGuests"); eller this.notifyObserver("addDish");
-		if (args == "numOfGuests" || args == "addDish") {
-			
-			this.numOfGuests.html(model.getNumberOfGuests());
-			this.totalCost.html(model.getTotalMenuPrice());
+	this.update = function(){
+		
+		numOfGuests.html(model.getNumberOfGuests());
 
-			// Hämtar måltiderna från dinnerModel.js
-			this.fullMenu = model.getFullMenu();
+		var div = container.find("#orderList");
 
-			// Clearar myOrder
-			this.orderList.html("");
+		orderList.html("");
 
-			// Adderar måltiderna i Sidebar
-			for (var i = 0; i < this.fullMenu.length; i++) {
-			var dish = this.fullMenu[i];
-			this.orderList.append('<tr><td>' + dish['name'] + '</td><td>' + model.getDishPrice(dish['id']) + '</td><</tr>');
-			}
+
+		for (var i = 0; i < model.getFullMenu().length; i++) {
+			// orderList.append('<tr><td id="sidebar-dish-name">' + model.getFullMenu()[i].title + '</td><td id="sidebar-dish-price>' + Math.round(model.getFullMenu()[i].pricePerServing*model.getNumberOfGuests()) + '</td></tr>');
+
+			var divRow = document.createElement('tr');
+			//divRow.className = "row space";
+
+			var divTitle = document.createElement('td');
+			divTitle.id = "sidebar-dish-name";
+			divTitle.innerHTML = model.getFullMenu()[i].title;
+
+			var divCost = document.createElement('td');
+			divCost.id = "sidebar-dish-price";
+			divCost.innerHTML = Math.round(model.getFullMenu()[i].pricePerServing*model.getNumberOfGuests());
+
+			divRow.appendChild(divTitle);
+			divRow.appendChild(divCost);
+			div.append(divRow);
 
 		}
 
-	}
+		totalPrice.html(model.getTotalMenuPrice());
 
-this.update();
 
-// Adderar observer vid "numOfGuests" och "addDish"
-model.addObserver(this);
+	};
 
+	this.update();
+
+	model.addObserver(this);
+	
+	
 }
