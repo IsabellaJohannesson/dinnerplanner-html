@@ -5,6 +5,9 @@ var DinnerOverView = function(container, model) {
 		this.dishBoxes = container.find("#dinner-overview-bottom");
 		this.totalPrice = container.find("#dinner-overview-totalprice");
 
+		this.confirmButton = container.find("#dinner-overview-confirm-btn");
+		this.goBack = container.find("#dinner-overview-back-btn");
+
 	
 	this.update = function() {	
 		this.dishBoxes.html("");
@@ -29,5 +32,4 @@ var DinnerOverView = function(container, model) {
 	this.update()
 	model.addObserver(this)	
 }
-
 
