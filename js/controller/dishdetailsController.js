@@ -1,17 +1,16 @@
 //ExampleView Object constructor
 var DishDetailsController = function (view,model) {
 	
-	$("#dish-details-confirm-btn").click(function(){
-		model.addDishToMenu(model.getSelectedDishId());
-		console.log(model.getSelectedDishId());
-		$("#dish-details-view").hide();
-		$("#dish-search-view").show();
-		$("#pendingrow").hide();
+	view.addToMenu.click(function(){
+		var dish = model.getCurrentDish();
+		model.addDishToMenu(dish);
+		
+		console.log("Dish added!");
+		showDishSearchViewScreen();
 	});
 
-	$("#dish-details-back-btn").click(function(){
-		$("#dish-details-view").hide();
-		$("#dish-search-view").show();
-		$("#pendingrow").hide();
+	view.goBack.click(function(){
+		showDishSearchViewScreen();
 	});
 }
+
