@@ -1,40 +1,57 @@
-var DishSearchView = function (container,model) {
-	
-	this.dishes = container.find("#dish-search-bottom");
-	this.searchField = container.find("#search-field");
+var DishSearchView = function (container, model) {
+
+	this.searchForm = container.find("#search-form");
+	this.searchField = container.find("#searchForDish");
+	this.typeValue = container.find("#selectDishType");
 	this.searchButton = container.find("#dish-search-search-btn");
+	
+	var dishes = container.find("#dish-search-bottom");
 
-	// Visar rätter beroende på typ
-	this.selectedDishType = function(type) {
-		this.allDishes = model.getAllDishes(type);
-		this.dishes.html("");
-		
-		for (var i = 0; i < this.allDishes.length; i++) {
-		var dish = this.allDishes[i];
-		this.dishes.append('<div class="dishlistbox"><div class="dish-search-image" style="background-image: url(images/' + dish['image'] + ')"><span class="dish-search-title">' + dish['name'] + '</span><span class="dish-id">' + dish['id'] +  '</span></div>');
+	this.update = function(changes) {
+		if (changes == "searchResults") {
+		dishes.html("");
 
-		}
-	}
 
-	// Visar rätter beroende på sökterm
-	this.searchDish = function(type, filter) {
-		var type = type;
-		var filter = filter;
-		this.allDishes = model.getAllDishes(type, filter);
-		this.dishes.html("");
-		
-		for (var i = 0; i < this.allDishes.length; i++) {
-					console.log("search-dishmethod");
+		var type = model.getType();
+		var filter = model.getFilter();
 
-			var dish = this.allDishes[i];
-				this.dishes.append('<div class="dishlistbox"><div class="dish-search-image" style="background-image: url(images/' + dish['image'] + ')"><span class="dish-search-title">' + dish['name'] + '</span><span class="dish-id">' + dish['id'] +  '</span></div>');
+		var div = document.createElement('DIV');
+
+		model.getAllDishes(type, filter, function(data) {
+			for(var i = 0; i < data.results.length; i++) {
+					var row = document.createElement('DIV');
+					row.className = "dishlistbox";
+					div.appendChild(row);
+
+					var divImage = document.createElement('DIV');
+					divImage.className = "dish-search-image";
+					var src = data.baseUri + data.results[i].image;
+					divImage.style.backgroundImage = "url(" + src + ")";
+					divImage.id = data.results[i].id;
+
+					var spanTitle = document.createElement('SPAN');
+					spanTitle.className ="dish-search-title";
+					spanTitle.innerHTML = data.results[i].title;
+
+					row.appendChild(spanTitle);
+					row.appendChild(divImage);
+
+
 			}
-	}
 
-	this.selectedDishType("starter");
+		}, function(error){
+			console.log(error);
+			console.log("Fel i DishSearchView")
+		});		
+		
+		dishes.append(div);
+		
+		}
+	};
 
-	this.update = function(args) {
 
-	}
+
+	this.update("searchResults");
 
 }
+
