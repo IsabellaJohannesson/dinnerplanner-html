@@ -1,34 +1,33 @@
+var DinnerOverView = function(container, model) {
 
-//ExampleView Object constructor
-var DinnerOverView = function (container,model) {
-
-	// Observer som uppdaterar vyn när numOfGuests uppdateras i model 
-	model.addObserver(this);
-
-	// Uppdaterar vyn när numOfGuests eller addDish ändras
-	this.update = function(args){
-		if (args == "numOfGuests" || args == "addDish") {
-
-			// Element att addera HTML I
-			this.title = container.find("#dinner-overview-mydinner");
-			this.dishes = container.find("#dinner-overview-bottom");
-
-			// Addering av element i HTML
-			this.title.html("My Dinner: " + model.getNumberOfGuests() + " people");
-			this.dishes.html("");
-			
-			this.menu = model.getFullMenu();
-			for(i in this.menu){
-			var dish = this.menu[i];
-			this.dishes.append('<div class="dishlistbox"><div class="dinner-overview-image" style="background-image: url(images/' + dish['image'] + ')"><span class="dinner-overview-title">' + dish['name'] + '</span></div>'
-			 + '<span class="dinner-overview-price">' + model.getDishPrice(dish['id']) + ' SEK</span></div>');
-			}		
-			
-		}
-	}
-
+	// Element att addera HTML i
+		this.myDinner = container.find("#dinner-overview-mydinner");
+		this.dishBoxes = container.find("#dinner-overview-bottom");
+		this.totalPrice = container.find("#dinner-overview-totalprice");
 
 	
+	this.update = function() {	
+		this.dishBoxes.html("");
 
+
+		var dishes = model.getFullMenu();
+		var numOfGuests = model.getNumberOfGuests();
+		
+
+		for (var i = 0; i < dishes.length; i++) {
+			this.dishBoxes.append('<div class="dishlistbox"><div class="dinner-overview-image" style="background-image: url(' + dishes[i].image + ')"><span class="dinner-overview-title">' + dishes[i].title + '</span></div>'
+		 + '<span class="dinner-overview-price">' + Math.round(dishes[i].pricePerServing*numOfGuests) + ' SEK</span></div>');
+
+
+		}
+
+	this.totalPrice.html(model.getTotalMenuPrice() + " SEK");
+	this.myDinner.html("My Dinner: " + model.getNumberOfGuests() + " people");
+
+	};	
+
+	this.update()
+	model.addObserver(this)	
 }
- 
+
+
